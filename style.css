@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+:root {
+  --cor01: #cfd4d8;
+  --cor02: #172a55;
+  --cor03: #bf7e04;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url("assets/2022-11-18.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100vw;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Coda", cursive;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-size: 1em;
+  color: var(--cor03);
+  font-weight: 550;
+}
+
+.logo span {
+  color: var(--cor02);
+}
+
+nav img {
+  width: 70px;
+  height: 70px;
+}
+
+nav ul li {
+  color: var(--cor02);
+  font-size: 0.8em;
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bolder;
+}
+
+.menu {
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+
+/*Configurações do Slider*/
+.slider {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.slider-content {
+  height: 75vh;
+  width: 85vw;
+  border-radius: 1.25em;
+  overflow: hidden;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-auto,
+.nav-manual {
+  position: absolute;
+  bottom: 1.25em;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+
+.nav-manual .manual-btn,
+.nav-auto div {
+  height: 1.25em;
+  width: 1.25em;
+  border: 2px solid var(--cor01);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.nav-manual .manual-btn:not(:last-child),
+.nav-auto div:not(:last-child) {
+  margin-right: 0.4em;
+}
+
+.nav-manual .manual-btn:hover {
+  background-color: var(--cor01);
+}
+
+#radio1:checked ~ #btn1 {
+  background-color: var(--cor01);
+}
+
+input,
+.img-mobile {
+  display: none;
+}
+
+.slides {
+  display: flex;
+  /*Esse width vai depender da quantidade de imagens do carrossel*/
+  width: 300%;
+  height: 100%;
+  transition: 0.6s;
+}
+
+.slide-box {
+  /* Essa largura e o resultado da Divisão de 100 pela quantidade de imagens no "caso 3"*/
+  width: 33.33%;
+  transition: 0.6s;
+}
+
+.slide-box img {
+  width: 100%;
+  height: 100%;
+}
+
+/*Transição de um slide pro outro usando o parametro margin left*/
+#radio1:checked ~ .primeiro {
+  margin-left: 0;
+}
+#radio2:checked ~ .primeiro {
+  margin-left: -33.33%;
+}
+#radio3:checked ~ .primeiro {
+  margin-left: -66.66%;
+}
+
+.conteudo-de-text {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 375px) {
+  .img-desktop {
+    display: none;
+  }
+  .img-mobile {
+    display: block;
+  }
+
+  header {
+    background-size: 100vw 55vh;
+  }
+
+  .menu {
+    height: 12vh;
+  }
+
+  nav h2 {
+    padding: 1em;
+  }
+
+  nav ul li {
+    font-weight: 200;
+    display: none;
+  }
+
+  .slider-content {
+    height: 35vh;
+    width: 95vw;
+    border-radius: 0.62em;
+    top: 35%;
+    left: 50%;
+  }
+  .nav-manual .manual-btn,
+  .nav-auto div {
+    border: 0.12em solid var(--cor01);
+  }
+}
